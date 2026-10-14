@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="uk">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Золота гора</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700&family=Golos+Text:wght@400;500;600&display=swap">
+<style>
+/* Палітра поки задана нішею — коли буде логотип, перерахується з нього. */
+:root{
+  --acc:#7A5B36; --acc2:#E3C9A4; --ink:#211A12;
+  --soft:#EFEBE7; --bg:#F9F8F6; --bg2:#F3F0ED; --surface:#FFFFFF;
+  --muted:#5D6873; --line:rgba(27,34,40,.12); --dark:#29221A;
+  --pad:clamp(20px,5vw,80px);
+  --d:"Geologica",system-ui,sans-serif; --b:"Golos Text",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--b);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block} a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--d);line-height:1.08;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.hdr{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr__in{display:flex;align-items:center;gap:22px;padding:11px var(--pad);max-width:1360px;margin:0 auto}
+.brand-img{height:44px;width:auto}
+.brand-txt{font-family:var(--d);font-weight:700;font-size:1.18rem;letter-spacing:-.02em;white-space:nowrap}
+.brand-txt i{color:var(--acc);font-style:normal}
+nav{display:flex;gap:25px;margin-left:auto;font-size:.94rem}
+nav a{color:var(--muted);transition:.2s} nav a:hover{color:var(--ink)}
+.tel{font-family:var(--d);font-weight:600;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 26px;border-radius:999px;
+  font-family:var(--d);font-weight:600;font-size:.94rem;border:0;cursor:pointer;transition:.22s}
+.btn--acc{background:var(--acc);color:#fff} .btn--acc:hover{filter:brightness(1.1)}
+.btn--line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn--line:hover{background:var(--soft)}
+.hero{max-width:1360px;margin:0 auto;padding:clamp(40px,6vw,86px) var(--pad) clamp(36px,5vw,70px);
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(26px,5vw,56px);align-items:center}
+.eyebrow{display:inline-flex;font-family:var(--d);font-size:.78rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--soft);color:var(--acc);padding:8px 16px;border-radius:999px;margin-bottom:20px}
+h1{font-size:clamp(2.05rem,4.9vw,3.75rem);margin-bottom:18px}
+/* Смуга під одним словом. nowrap тримає слово цілим, тому смуга не рветься
+   при переносі рядка — та сама біда, що була в hero.mjs. */
+.hl{background:linear-gradient(to top,var(--acc2) 0,var(--acc2) 30%,transparent 30%);padding:0 4px;white-space:nowrap}
+.sub{font-size:clamp(1rem,1.5vw,1.17rem);color:var(--muted);max-width:52ch;margin-bottom:26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.facts{display:flex;gap:30px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line)}
+.fact b{display:block;font-family:var(--d);font-size:1.65rem;line-height:1.1;color:var(--acc)}
+.fact span{font-size:.86rem;color:var(--muted)}
+.side{background:var(--dark);color:#EAEFF3;border-radius:16px;padding:clamp(24px,3vw,36px)}
+.side h3{font-size:1.1rem;color:#fff;margin-bottom:16px}
+.side ul{list-style:none;display:grid;gap:12px}
+.side li{display:flex;gap:12px;font-size:.96rem;color:#C3CDD6}
+.side li::before{content:'';flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--acc2);margin-top:9px}
+.side .addr{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);font-size:.92rem;color:#C3CDD6}
+@media(max-width:900px){ .hero{grid-template-columns:1fr;padding-top:30px} nav,.tel{display:none} .brand-img{height:36px} }
+/* Страховка від того, через що ми й продаємо редизайн: на вузькому екрані
+   кнопка в шапці разом із довгою назвою вилазила за край. Назві дозволяємо
+   стискатись, кнопці - бути компактнішою. Перевіряти overflow.mjs. */
+@media(max-width:480px){
+  .hdr__in{gap:12px}
+  .brand-txt{font-size:1rem;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .hdr__in .btn{padding:12px 16px;font-size:.88rem;flex:0 0 auto}
+}
+</style>
+
+<header class="hdr"><div class="hdr__in">
+  <a href="#top" aria-label="Золота гора"><span class="brand-txt">Золота гора<i>.</i></span></a>
+  <nav><a href="#">Послуги</a><a href="#">Ціни</a><a href="#">Про нас</a><a href="#">Контакти</a></nav>
+  <span class="tel">+380 50 432 0353</span>
+  <a class="btn btn--acc" href="tel:+380504320353">Запитати</a>
+</div></header>
+
+<section class="hero" id="top">
+  <div>
+    <span class="eyebrow">Готель · Ужгород</span>
+    <h1>Приїхали -<br>і <span class="hl">вже вдома</span></h1>
+    <p class="sub">Номери для відпочинку й для роботи. Пишіть або телефонуйте - підкажемо, що вільно на ваші дати.</p>
+    <div class="cta">
+      <a class="btn btn--acc" href="tel:+380504320353">Запитати про номер</a>
+      <a class="btn btn--line" href="#">Номери й ціни</a>
+    </div>
+    <div class="facts"><div class="fact"><b>4,3</b><span>оцінка в Google</span></div><div class="fact"><b>2177</b><span>відгуків клієнтів</span></div></div>
+  </div>
+  <div class="side">
+    <h3>Як це працює</h3>
+    <ul><li>Кажете дати й кількість гостей</li><li>Ми перевіряємо, що вільно</li><li>Тримаємо номер за вами</li><li>Залишається приїхати</li></ul>
+    <div class="addr">Урочище «Золота гора», Ужгород, Ужгород</div>
+  </div>
+</section>
+</html>
